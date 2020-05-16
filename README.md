@@ -1,3 +1,13 @@
+Multi step form with sample data. The project uses:
+- [material-table](https://material-table.com/)
+- [MuiThemeProvider and createMuiTheme from Material UI](https://material-ui.com/customization/theming/)
+- [react-form-stepper](https://www.npmjs.com/package/react-form-stepper)
+
+CSS in BEM Methodology
+
+_____
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
