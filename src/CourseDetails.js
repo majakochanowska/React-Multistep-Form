@@ -78,11 +78,6 @@ class CourseDetails extends Component {
             color: '#011b64'
           }
         },
-        /*MuiToolbar: {
-          gutters: {
-            paddingLeft: '3px'
-          }
-        },*/
         MuiToolbar: {
           root: {
             borderBottom: '1px solid grey',
@@ -140,7 +135,7 @@ class CourseDetails extends Component {
 
           <div className='table'>
 
-           <MuiThemeProvider theme={theme}>
+            <MuiThemeProvider theme={theme}>
               <MaterialTable
                 title='Choose courses'
                 columns={columns}
@@ -167,7 +162,7 @@ class CourseDetails extends Component {
                   },
                 }}
               />
-              </MuiThemeProvider>
+            </MuiThemeProvider>
 
           </div>
 
