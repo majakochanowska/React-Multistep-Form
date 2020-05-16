@@ -7,6 +7,11 @@ CSS in BEM Methodology
 
 _____
 
+To do:
+- validation
+- improve styling
+
+_____
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
