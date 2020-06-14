@@ -4,6 +4,62 @@ import PersonalDetails from './PersonalDetails';
 import CourseDetails from './CourseDetails';
 import Summary from './Summary';
 
+//Sample data
+const coursesData = [
+  {
+    id: 1,
+    courseName: 'HTML',
+    category: 'Front-end'
+  },
+  {
+    id: 2,
+    courseName: 'CSS',
+    category: 'Front-end'
+  },
+  {
+    id: 3,
+    courseName: 'JavaScript',
+    category: 'Front-end'
+  },
+  {
+    id: 4,
+    courseName: 'React',
+    category: 'Front-end'
+  },
+  {
+    id: 5,
+    courseName: 'Angular',
+    category: 'Front-end'
+  },
+  {
+    id: 6,
+    courseName: 'Vue',
+    category: 'Front-end'
+  },
+  {
+    id: 7,
+    courseName: 'Java',
+    category: 'Back-end'
+  },
+  {
+    id: 8,
+    courseName: 'Python',
+    category: 'Back-end'
+  },
+  {
+    id: 9,
+    courseName: 'PHP',
+    category: 'Back-end'
+  },
+  {
+    id: 10,
+    courseName: 'Express',
+    category: 'Back-end'
+  }       
+];
+
+const levelsData = ['Beginner', 'Intermediate', 'Advanced'];
+
 class Form extends Component {
   state = {
     step: 1,
@@ -65,62 +121,6 @@ class Form extends Component {
       courses,
       level,
     } = this.state;
-
-    //Sample data
-    const coursesData = [
-      {
-        id: 1,
-        courseName: 'HTML',
-        category: 'Front-end'
-      },
-      {
-        id: 2,
-        courseName: 'CSS',
-        category: 'Front-end'
-      },
-      {
-        id: 3,
-        courseName: 'JavaScript',
-        category: 'Front-end'
-      },
-      {
-        id: 4,
-        courseName: 'React',
-        category: 'Front-end'
-      },
-      {
-        id: 5,
-        courseName: 'Angular',
-        category: 'Front-end'
-      },
-      {
-        id: 6,
-        courseName: 'Vue',
-        category: 'Front-end'
-      },
-      {
-        id: 7,
-        courseName: 'Java',
-        category: 'Back-end'
-      },
-      {
-        id: 8,
-        courseName: 'Python',
-        category: 'Back-end'
-      },
-      {
-        id: 9,
-        courseName: 'PHP',
-        category: 'Back-end'
-      },
-      {
-        id: 10,
-        courseName: 'Express',
-        category: 'Back-end'
-      }       
-    ];
-
-    const levelsData = ['Beginner', 'Intermediate', 'Advanced'];
 
     const coursesOptions = coursesData.map(el => ({
       course: el.courseName,
