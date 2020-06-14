@@ -69,6 +69,15 @@ class Form extends Component {
     phone: '',
     courses: [],
     level: '',
+    isError: {
+      firstName: false,
+      lastName: false
+    },
+    errorMessage: {
+      firstName: '',
+      lastName: ''
+    }
+
   };
 
   nextStep = () => {
@@ -89,6 +98,22 @@ class Form extends Component {
     this.setState({
       [input]: e.target.value
     })
+
+    if (input === 'firstname') {
+      if (this.state.firstname.length >= 1) {
+        this.setState({
+          isError: {...this.state.isError, firstName: false}
+        })
+      }
+    }
+
+    else if (input === 'lastname') {
+      if (this.state.lastname.length >= 1) {
+        this.setState({
+          isError: {...this.state.isError, lastName: false}
+        })
+      }
+    }
   }
 
   addLevel = e => {
@@ -105,6 +130,24 @@ class Form extends Component {
     })
   };
 
+  validateFirstName = () => {
+    if (this.state.firstname.length < 2) {
+      this.setState({
+        errorMessage: {...this.state.errorMessage, firstName: 'Type your first name (at least 2 characters)'},
+        isError: {...this.state.isError, firstName: true}
+      })
+    }
+  }
+
+  validateLastName = () => {
+    if (this.state.lastname.length < 2) {
+      this.setState({
+        errorMessage: {...this.state.errorMessage, lastName: 'Type your last name (at least 2 characters)'},
+        isError: {...this.state.isError, lastName: true}
+      })
+    }
+  } 
+
   submitData = e => {
     e.preventDefault();
     alert('Data sent');
@@ -120,6 +163,8 @@ class Form extends Component {
       phone,
       courses,
       level,
+      errorMessage,
+      isError
     } = this.state;
 
     const coursesOptions = coursesData.map(el => ({
@@ -154,6 +199,10 @@ class Form extends Component {
             lastname={lastname}
             email={email}
             phone={phone}
+            validateFirstName={this.validateFirstName}
+            validateLastName={this.validateLastName}
+            errorMessage={errorMessage}
+            isError={isError}
           />
         )
       case 2:
@@ -182,6 +231,7 @@ class Form extends Component {
             submitData={this.submitData}
           />
         )
+      default: return null
     }
   }
 }

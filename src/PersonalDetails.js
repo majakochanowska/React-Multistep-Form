@@ -15,6 +15,10 @@ class PersonalDetails extends Component {
       email, 
       phone, 
       handleChange, 
+      validateFirstName,
+      validateLastName,
+      errorMessage,
+      isError
     } = this.props;
 
     return (
@@ -42,14 +46,16 @@ class PersonalDetails extends Component {
               <label htmlFor='first name' className='form-group__label'>
               First name
               </label>
-              <input type='text' value={firstname} name='first name' onChange={handleChange('firstname')} className='form-group__input' />
+              <input type='text' value={firstname} name='first name' onChange={handleChange('firstname')} onBlur={validateFirstName} className='form-group__input' />
+              <p className='error'>{isError.firstName && errorMessage.firstName}</p>
             </div>
 
             <div className='form-group__element'>
               <label htmlFor='last name' className='form-group__label'>
               Last name
               </label>
-              <input type='text' value={lastname} name='last name' onChange={handleChange('lastname')} className='form-group__input' />
+              <input type='text' value={lastname} name='last name' onChange={handleChange('lastname')} onBlur={validateLastName} className='form-group__input' />
+              <p className='error'>{isError.lastName && errorMessage.lastName}</p>
             </div>
 
             <div className='form-group__element'>

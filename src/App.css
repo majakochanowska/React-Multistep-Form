@@ -119,3 +119,9 @@
   left: calc((-50% + 2em) - 8px) !important;
   right: calc((50% + 2em) - 8px) !important;
 }
+
+.error {
+  margin-top: 0;
+  color: red;
+  font-size: 90%;
+}
