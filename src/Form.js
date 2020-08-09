@@ -69,15 +69,10 @@ class Form extends Component {
     phone: '',
     courses: [],
     level: '',
-    isError: {
-      firstName: false,
-      lastName: false
-    },
-    errorMessage: {
-      firstName: '',
-      lastName: ''
-    }
-
+    isErrorFirstName: true,
+    isErrorLastName: true,
+    errorMessageFirstName: '',
+    errorMessageLastName: ''
   };
 
   nextStep = () => {
@@ -102,7 +97,7 @@ class Form extends Component {
     if (input === 'firstname') {
       if (this.state.firstname.length >= 1) {
         this.setState({
-          isError: {...this.state.isError, firstName: false}
+          isErrorFirstName: false
         })
       }
     }
@@ -110,7 +105,7 @@ class Form extends Component {
     else if (input === 'lastname') {
       if (this.state.lastname.length >= 1) {
         this.setState({
-          isError: {...this.state.isError, lastName: false}
+          isErrorLastName: false
         })
       }
     }
@@ -133,19 +128,23 @@ class Form extends Component {
   validateFirstName = () => {
     if (this.state.firstname.length < 2) {
       this.setState({
-        errorMessage: {...this.state.errorMessage, firstName: 'Type your first name (at least 2 characters)'},
-        isError: {...this.state.isError, firstName: true}
-      })
+        isErrorFirstName: true,
+        errorMessageFirstName: 'Type your first name (at least 2 characters)'
+      });
+      return false;
     }
+    return true;
   }
 
   validateLastName = () => {
     if (this.state.lastname.length < 2) {
       this.setState({
-        errorMessage: {...this.state.errorMessage, lastName: 'Type your last name (at least 2 characters)'},
-        isError: {...this.state.isError, lastName: true}
-      })
+        isErrorLastName: true,
+        errorMessageLastName: 'Type your last name (at least 2 characters)'
+      });
+      return false;
     }
+    return true;
   } 
 
   submitData = e => {
@@ -154,7 +153,6 @@ class Form extends Component {
   }
 
   render() {
-
     const {
       step,
       firstname,
@@ -163,8 +161,10 @@ class Form extends Component {
       phone,
       courses,
       level,
-      errorMessage,
-      isError
+      isErrorFirstName,
+      isErrorLastName,
+      errorMessageFirstName,
+      errorMessageLastName
     } = this.state;
 
     const coursesOptions = coursesData.map(el => ({
@@ -187,7 +187,6 @@ class Form extends Component {
         {el}
       </option>
     ));
-
     
     switch(step) {
       case 1: 
@@ -201,8 +200,10 @@ class Form extends Component {
             phone={phone}
             validateFirstName={this.validateFirstName}
             validateLastName={this.validateLastName}
-            errorMessage={errorMessage}
-            isError={isError}
+            isErrorFirstName={isErrorFirstName}
+            isErrorLastName={isErrorLastName}
+            errorMessageFirstName={errorMessageFirstName}
+            errorMessageLastName={errorMessageLastName}
           />
         )
       case 2:

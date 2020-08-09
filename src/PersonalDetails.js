@@ -4,8 +4,12 @@ import './App.css';
 
 class PersonalDetails extends Component {
   continue = e => {
-    e.preventDefault();
-    this.props.nextStep();
+    e.preventDefault(); 
+    const isFirstNameValid = this.props.validateFirstName();
+    const isLastNameValid = this.props.validateLastName();
+    if (isFirstNameValid && isLastNameValid) {
+      this.props.nextStep();
+    }
   }
 
   render() {
@@ -17,8 +21,10 @@ class PersonalDetails extends Component {
       handleChange, 
       validateFirstName,
       validateLastName,
-      errorMessage,
-      isError
+      isErrorFirstName,
+      isErrorLastName,
+      errorMessageFirstName,
+      errorMessageLastName
     } = this.props;
 
     return (
@@ -46,8 +52,8 @@ class PersonalDetails extends Component {
               <label htmlFor='first name' className='form-group__label'>
               First name
               </label>
-              <input type='text' value={firstname} name='first name' onChange={handleChange('firstname')} onBlur={validateFirstName} className='form-group__input' />
-              <p className='error'>{isError.firstName && errorMessage.firstName}</p>
+              <input type='text' value={firstname} name='first name' onChange={handleChange('firstname')} onBlur={validateFirstName} className='form-group__input'/>
+              <p className='error'>{isErrorFirstName && errorMessageFirstName}</p>
             </div>
 
             <div className='form-group__element'>
@@ -55,7 +61,7 @@ class PersonalDetails extends Component {
               Last name
               </label>
               <input type='text' value={lastname} name='last name' onChange={handleChange('lastname')} onBlur={validateLastName} className='form-group__input' />
-              <p className='error'>{isError.lastName && errorMessage.lastName}</p>
+              <p className='error'>{isErrorLastName && errorMessageLastName}</p>
             </div>
 
             <div className='form-group__element'>
