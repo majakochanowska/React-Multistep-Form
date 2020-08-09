@@ -8,7 +8,7 @@ CSS in BEM Methodology
 _____
 
 To do:
-- validation
+- email and password validation
 - improve styling
 
 _____
